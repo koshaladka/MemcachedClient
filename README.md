@@ -15,7 +15,15 @@ Memcached  установлен в отдельном контейнере.
 - *composer install*
 - *./vendor/bin/sail up*
 
-###  Для проверки тестов
+###  Для проверки тестов в проекте
 
 - *alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'*
 - *sail artisan test*
+- *vendor/bin/phpcs --standard=PSR12 app/*
+
+### Комментарии к проверкам Github Actions
+
+Статус проверок 'failed, тк 
+-не удается подключить к Memcashed серверу
+-в исходыных данных Laravel есть несоовтествие PCR-12 
+
