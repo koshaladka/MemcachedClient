@@ -1,0 +1,29 @@
+name: Laravel Tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  laravel-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+          extensions: mbstring, zip, pdo, bcmath, exif, pcntl
+
+      - name: Install dependencies
+        run: composer install --no-interaction
+
+      - name: Run tests
+        run: php artisan test
